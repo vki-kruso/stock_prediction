@@ -7,16 +7,16 @@ const API_KEY = process.env.REACT_APP_GEMINI_API;
 const FinancialForm = ({setResult}) => {
 
     const [values, setValues] = useState({
-        marketPrice: '50',
-        eps: '5',
-        bookValue: '25',
-        sales: '10',
-        annualDividends: '2',
-        previousEps: '4',
-        currentEps: '5',
-        totalDebt: '100',
-        totalEquity: '200',
-        netIncome: '30',
+        marketPrice: '396.36',
+        eps: '0.27',
+        bookValue: '23.40',
+        sales: '30.40',
+        annualDividends: '0',
+        previousEps: '4.30',
+        currentEps: '2.04',
+        totalDebt: '49760000000',
+        totalEquity: '75360000000',
+        netIncome: '7130000000',
     })
     const [isSent, setIsSent] = useState(true)
 
@@ -35,7 +35,8 @@ const FinancialForm = ({setResult}) => {
             {
                 "parts": [
                     {
-                        "text": "From next prompt I am gonna send you some parameters for predicting stock market share , tell me is it overvalued or undervalued , buy or not"
+                        "text": "From next prompt I am gonna send you some parameters for predicting stock market share , tell me is it overvalued or undervalued , buy or not",
+                        //"text": "From next prompt I am gonna send you some parameters for predicting stock market share , tell me is it overvalued or undervalued , buy or not and potential price(only as number, even not exact one)"
                     }
                 ],
                 "role": "user"
@@ -97,7 +98,6 @@ const FinancialForm = ({setResult}) => {
         let resjson = await res.json()
         setIsSent(true)
         let responseMessage = resjson.candidates[0].content.parts[0].text
-        console.log(responseMessage)
         setResult(responseMessage)
     }
     return (
